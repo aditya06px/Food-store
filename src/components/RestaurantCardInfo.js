@@ -16,12 +16,6 @@ const RestauntCardInfo = () => {
     const { id } = useParams();
     const restaurant = useRestaurantInfo(id);
 
-    if(restaurant) {
-
-        console.log(Object.values(restaurant?.menu?.items))
-    }
-    
-
     return  !restaurant ? <Shimer /> : (
         <div className="max-w-4xl mx-auto">
         <div className="flex ">
@@ -37,11 +31,11 @@ const RestauntCardInfo = () => {
         <div className="max-w-4xl mx-auto">
             {
                 Object.values(restaurant?.menu?.items).map((item)=> {
-                   return ( <Menus {...item} key={item.id}  />)
+                   return ( <Menus item = {item} key={item.id}  />)
                 })
             }
         </div>
-        
+                       {/* can pass like item = {...item} */}
         </div>
     )
 }
